@@ -1,0 +1,10 @@
+# Databricks runtime already ships pandas, pyspark, delta and requests.
+# Only needed if you run this outside Databricks (e.g. databricks-connect):
+requests
+pandas>=2.0
+pyarrow
+sqlalchemy
+psycopg2-binary
+streamlit
+plotly
+pyarrow
