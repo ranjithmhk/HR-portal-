@@ -24,13 +24,13 @@ def build(name, spec, dates):
     path = settings.path(settings.DATAWAREHOUSE, name)
     full = dates is None or not delta_store.exists(settings.DATAWAREHOUSE, name) or len(dates) > MAX_DATES
     sql = spec["sql"] if full else f"SELECT * FROM ({spec['sql']}) WHERE date_key IN ({', '.join(map(str, sorted(dates)))})"
-    result = spark.sql(sql).cache()
+    result = spark.sql(sql)                      # no .cache(): not supported on serverless compute
     writer = result.write.format("delta").mode("overwrite").option("overwriteSchema", "true") if full \
         else result.write.format("delta").mode("overwrite").option(
             "replaceWhere", f"date_key IN ({', '.join(map(str, sorted(dates)))})")
     writer.save(path)
-    rows = result.count()
-    result.unpersist()
+    written = delta_store.read(settings.DATAWAREHOUSE, name)
+    rows = written.count() if full else written.filter(f"date_key IN ({', '.join(map(str, sorted(dates)))})").count()
 
     total = delta_store.read(settings.DATAWAREHOUSE, name)
     dup = total.count() - total.select(*spec["pk"]).distinct().count()

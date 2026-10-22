@@ -17,8 +17,10 @@ spark = SparkSession.builder.getOrCreate()
 
 def ensure_storage():
     """Session settings + the storage root (a Unity Catalog volume is created if it does not exist)."""
-    spark.conf.set("spark.sql.session.timeZone", "UTC")
-    spark.conf.set("spark.sql.execution.arrow.pyspark.enabled", "true")   # fast + safe toPandas()
+    try:                                       # some compute types (serverless) restrict session configs
+        spark.conf.set("spark.sql.session.timeZone", "UTC")
+    except Exception as error:
+        print(f"  (session time zone not changed: {error.__class__.__name__})")
     parts = settings.ROOT.strip("/").split("/")
     if parts[0] == "Volumes" and len(parts) >= 4:                          # /Volumes/<catalog>/<schema>/<volume>/...
         catalog, schema, volume = parts[1:4]

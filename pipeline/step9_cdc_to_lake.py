@@ -62,12 +62,11 @@ def main():
 
         changes = (spark.read.format("delta").option("readChangeFeed", "true")
                    .option("startingVersion", start).option("endingVersion", latest).load(full))
-        lake = flatten(changes, pk).cache()
+        lake = flatten(changes, pk)
         count = lake.count()
         if count:
             (lake.write.format("delta").mode("append").option("mergeSchema", "true")   # 1. write first
              .save(settings.path(settings.DATALAKE, table)))
-        lake.unpersist()
         save_checkpoint(table, latest)                                                  # 2. then move checkpoint
         total += count
         print(f"  {table:<24} {count:>7} changes -> {settings.path(settings.DATALAKE, table)} (v{start}..v{latest})")
