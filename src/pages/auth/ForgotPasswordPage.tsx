@@ -14,31 +14,27 @@ export const ForgotPasswordPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#F8F9FB] flex items-center justify-center p-4 relative overflow-hidden select-none font-sans">
+    <div className="min-h-screen w-full bg-[#F5F5F7] dark:bg-black flex items-center justify-center p-4 relative overflow-hidden select-none font-sans">
       <NetworkWatermark className="text-primary" opacity={0.04} />
 
-      <div className="relative z-10 w-full max-w-[440px] bg-white rounded-[20px] shadow-zoho border border-[#E7EBF0] p-8 sm:p-10 page-transition overflow-hidden">
-        {/* Zoho 4-Color Brand Stripe */}
-        <div className="h-1 w-full zoho-brand-stripe absolute top-0 left-0 right-0" />
-
+      <div className="relative z-10 w-full max-w-[440px] bg-surface rounded-2xl shadow-card border border-border p-8 sm:p-10 page-transition overflow-hidden">
         <div className="flex flex-col items-center text-center mb-6 pt-2">
           <MHKLogo variant="card" size="xl" className="mb-3" />
-          <h1 className="text-2xl font-bold text-text font-heading">Reset Password</h1>
-          <div className="w-8 h-[2.5px] bg-gradient-to-r from-[#EE0014] to-[#FED600] rounded-full my-2" />
-          <p className="text-xs text-text-secondary">
-            Enter your official company email to receive reset instructions
+          <h1 className="text-2xl font-bold text-text font-heading tracking-tight">Reset Password</h1>
+          <p className="text-xs text-text-secondary mt-1">
+            Enter your official company email for recovery instructions
           </p>
         </div>
 
         {submitted ? (
           <div className="text-center space-y-4">
-            <div className="w-12 h-12 rounded-full bg-[#EDFBF4] text-[#00A859] flex items-center justify-center mx-auto">
-              <CheckCircle2 className="w-6 h-6 text-[#00A859]" strokeWidth={2} />
+            <div className="w-12 h-12 rounded-full bg-success/10 text-success flex items-center justify-center mx-auto">
+              <CheckCircle2 className="w-6 h-6 text-success" strokeWidth={2} />
             </div>
             <div>
               <h3 className="font-heading font-bold text-sm text-text">Password Reset Link Sent</h3>
               <p className="text-xs text-text-secondary mt-1">
-                We've sent recovery instructions to <strong className="text-text">{email}</strong>. Please check your inbox and spam folder.
+                Recovery instructions sent to <strong className="text-text">{email}</strong>.
               </p>
             </div>
             <Link
@@ -64,7 +60,7 @@ export const ForgotPasswordPage: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full h-11 rounded-btn bg-[#EE0014] hover:bg-[#D60012] text-white font-semibold text-sm transition-all shadow-xs hover:shadow"
+              className="w-full h-11 rounded-full bg-primary hover:bg-primary-hover text-white font-semibold text-sm transition-all shadow-xs hover:shadow"
             >
               Send Password Reset Link →
             </button>

@@ -18,6 +18,7 @@ import {
   DollarSign,
   ChevronRight,
   Building,
+  Cake,
 } from 'lucide-react';
 import { useStore } from '../../context/StoreContext';
 import { Card } from '../../components/ui/Card';
@@ -145,9 +146,8 @@ export const HROverview: React.FC = () => {
           <h1 className="text-2xl sm:text-3xl font-bold text-text font-heading tracking-tight leading-tight">
             Good afternoon, {currentUser.name.split(' ')[0]}
           </h1>
-          <div className="w-10 h-[2.5px] bg-gradient-to-r from-[#EE0014] to-[#FED600] rounded-full mt-2" />
-          <p className="text-sm text-text-secondary mt-2">
-            Head of People Operations · Overview of workforce requests, hiring pipelines, and compliance alerts
+          <p className="text-sm text-text-secondary mt-1">
+            People Operations · Workforce overview & approvals
           </p>
         </div>
 
@@ -156,7 +156,7 @@ export const HROverview: React.FC = () => {
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
             onClick={() => navigate('/hr/recruit/candidates')}
-            className="h-9 px-4 rounded-btn bg-[#EE0014] hover:bg-[#D60012] text-white text-xs font-semibold shadow-xs hover:shadow transition-all"
+            className="h-9 px-4 rounded-full bg-primary hover:bg-primary-hover text-white text-xs font-semibold shadow-xs hover:shadow transition-all"
           >
             + Onboard Candidate
           </motion.button>
@@ -218,25 +218,32 @@ export const HROverview: React.FC = () => {
                 <form onSubmit={handlePostAnnouncement} className="space-y-3">
                   <input
                     type="text"
+                    name="announcement-title"
+                    autoComplete="off"
                     required
-                    placeholder="Announcement title..."
+                    placeholder="Announcement title…"
+                    aria-label="Announcement title"
                     value={annTitle}
                     onChange={e => setAnnTitle(e.target.value)}
-                    className="w-full h-9 px-3 rounded-input border border-border bg-surface text-xs text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full h-9 px-3 rounded-input border border-border bg-surface text-xs text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   />
                   <textarea
                     rows={2}
+                    name="announcement-body"
                     required
-                    placeholder="Broadcast text..."
+                    placeholder="Broadcast text…"
+                    aria-label="Announcement text"
                     value={annBody}
                     onChange={e => setAnnBody(e.target.value)}
-                    className="w-full p-2.5 rounded-input border border-border bg-surface text-xs text-text focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                    className="w-full p-2.5 rounded-input border border-border bg-surface text-xs text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary resize-none"
                   />
                   <div className="flex items-center justify-between">
                     <select
+                      name="announcement-category"
+                      aria-label="Announcement category"
                       value={annCategory}
                       onChange={e => setAnnCategory(e.target.value as any)}
-                      className="h-8 px-2 rounded-lg border border-border bg-surface text-xs text-text"
+                      className="h-8 px-2 rounded-lg border border-border bg-surface text-xs text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     >
                       <option value="Announcement">Announcement</option>
                       <option value="Policy">Policy</option>
@@ -244,7 +251,7 @@ export const HROverview: React.FC = () => {
                     </select>
                     <button
                       type="submit"
-                      className="h-8 px-3.5 rounded-btn hero-gradient text-white text-xs font-semibold shadow-sm"
+                      className="h-8 px-3.5 rounded-btn hero-gradient text-white text-xs font-semibold shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     >
                       Post →
                     </button>
@@ -258,11 +265,11 @@ export const HROverview: React.FC = () => {
               <div className="flex items-center justify-between">
                 <span className="micro-label text-text-secondary">Incomplete Contacts</span>
                 {allReminded ? (
-                  <span className="text-[11px] font-semibold text-[#15803D]">All Reminded ✓</span>
+                  <span className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">All Reminded ✓</span>
                 ) : (
                   <button
                     onClick={handleRemindAll}
-                    className="text-xs font-bold text-primary hover:underline"
+                    className="text-xs font-bold text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
                   >
                     Remind All
                   </button>
@@ -278,11 +285,11 @@ export const HROverview: React.FC = () => {
                     </div>
 
                     {remindedMap[u.id] || allReminded ? (
-                      <span className="text-[10px] font-semibold text-[#15803D]">Sent</span>
+                      <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">Sent</span>
                     ) : (
                       <button
                         onClick={() => handleRemind(u.id)}
-                        className="text-xs font-semibold text-primary hover:underline"
+                        className="text-xs font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
                       >
                         Remind
                       </button>
@@ -297,8 +304,10 @@ export const HROverview: React.FC = () => {
               <span className="micro-label text-text-secondary">Birthdays · Next 14 Days</span>
               <div className="space-y-2 text-xs">
                 <div className="p-2.5 rounded-lg bg-surface-muted flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span>🎂</span>
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-7 h-7 rounded-lg bg-magenta-50 dark:bg-magenta-50/20 text-magenta flex items-center justify-center shrink-0">
+                      <Cake className="w-3.5 h-3.5" strokeWidth={1.75} />
+                    </div>
                     <div>
                       <p className="font-semibold text-text">Priya Patel</p>
                       <p className="text-[10px] text-text-tertiary">Data Science · Hyderabad</p>

@@ -13,13 +13,13 @@ import { Card } from '../../../components/ui/Card';
 import { StatusBadge } from '../../../components/ui/StatusBadge';
 
 export const AccountingReports: React.FC = () => {
-  // Zoho Analytics Chart Colors: Blue #056CB8, Red #EE0014, Green #00A859, Yellow #FED600, Purple #582467
-  const chartColors = ['#056CB8', '#EE0014', '#00A859', '#FED600', '#582467'];
+  // Apple System Palette: Blue, Green, Orange, Purple, Indigo
+  const chartColors = ['#0071E3', '#34C759', '#FF9500', '#AF52DE', '#5856D6'];
 
   const agingData = [
-    { label: 'Current (0-30 days)', amount: 68000, color: '#056CB8', percent: 62 },
-    { label: '31-60 days', amount: 24500, color: '#EE0014', percent: 22 },
-    { label: '61-90 days', amount: 18200, color: '#FFB800', percent: 16 },
+    { label: 'Current (0-30 days)', amount: 68000, color: '#0071E3', percent: 62 },
+    { label: '31-60 days', amount: 24500, color: '#FF9500', percent: 22 },
+    { label: '61-90 days', amount: 18200, color: '#FF3B30', percent: 16 },
   ];
 
   return (
@@ -27,7 +27,7 @@ export const AccountingReports: React.FC = () => {
       <PageHeader
         breadcrumbs={[{ label: 'Accounting', href: '/hr/overview' }, { label: 'Financial Reports' }]}
         title="Financial Statements & Accounts Aging"
-        subtitle="Profit & Loss summary, accounts receivable aging schedule and cash flow benchmarks"
+        subtitle="P&L summary, AR aging & cash flow benchmarks"
         actions={
           <button
             onClick={() => alert('Downloading official Q3 statutory P&L package')}

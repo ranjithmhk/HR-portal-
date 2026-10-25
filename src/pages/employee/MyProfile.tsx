@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   User,
   Briefcase,
@@ -10,6 +11,8 @@ import {
   CheckCircle2,
   AlertTriangle,
   Camera,
+  Check,
+  Lock,
 } from 'lucide-react';
 import { useStore } from '../../context/StoreContext';
 import { PageHeader } from '../../components/ui/PageHeader';
@@ -17,7 +20,8 @@ import { Card } from '../../components/ui/Card';
 import { StatusBadge } from '../../components/ui/StatusBadge';
 
 export const MyProfile: React.FC = () => {
-  const { currentUser } = useStore();
+  const { currentUser, currentRole, switchRole } = useStore();
+  const navigate = useNavigate();
 
   const [activeTab, setActiveTab] = useState<'personal' | 'employment' | 'emergency' | 'bank' | 'docs' | 'security'>('personal');
 
@@ -239,6 +243,93 @@ export const MyProfile: React.FC = () => {
                     <span className="text-text-tertiary block">Joining Date</span>
                     <span className="font-mono font-bold text-text mt-0.5 block">{currentUser.joiningDate}</span>
                   </div>
+                </div>
+
+                {/* Workspace Permissions & Role Management */}
+                <div className="pt-4 border-t border-border space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h4 className="font-heading font-semibold text-sm text-text">Workspace Privileges</h4>
+                      <p className="text-xs text-text-secondary mt-0.5">
+                        {currentUser.role === 'ADMIN'
+                          ? 'Enterprise Administrator · Full access to Admin, HR, and Employee consoles'
+                          : currentUser.role === 'HR'
+                          ? 'People Operations Lead · Access to HR and Employee consoles'
+                          : 'Standard Member · Standard employee permissions'}
+                      </p>
+                    </div>
+                    <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-primary-50 text-primary uppercase">
+                      {currentUser.role}
+                    </span>
+                  </div>
+
+                  {/* Multi-role consoles for Admin and HR */}
+                  {currentUser.role === 'ADMIN' || currentUser.role === 'HR' ? (
+                    <div className="p-3 rounded-xl bg-surface-muted border border-border space-y-2">
+                      <span className="micro-label text-text-tertiary">Quick Switch Console</span>
+                      <div className="flex flex-wrap gap-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            switchRole('EMPLOYEE');
+                            navigate('/employee/home');
+                          }}
+                          className={`px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all inline-flex items-center gap-1.5 ${
+                            currentRole === 'EMPLOYEE'
+                              ? 'bg-primary text-white border-primary shadow-xs'
+                              : 'border-border bg-surface hover:bg-surface-muted text-text'
+                          }`}
+                        >
+                          <User className="w-3.5 h-3.5" />
+                          <span>Employee Workspace</span>
+                          {currentRole === 'EMPLOYEE' && <Check className="w-3 h-3 text-white" strokeWidth={2.5} />}
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            switchRole('HR');
+                            navigate('/hr/overview');
+                          }}
+                          className={`px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all inline-flex items-center gap-1.5 ${
+                            currentRole === 'HR'
+                              ? 'bg-primary text-white border-primary shadow-xs'
+                              : 'border-border bg-surface hover:bg-surface-muted text-text'
+                          }`}
+                        >
+                          <Briefcase className="w-3.5 h-3.5" />
+                          <span>HR Console</span>
+                          {currentRole === 'HR' && <Check className="w-3 h-3 text-white" strokeWidth={2.5} />}
+                        </button>
+
+                        {currentUser.role === 'ADMIN' && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              switchRole('ADMIN');
+                              navigate('/admin/overview');
+                            }}
+                            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all inline-flex items-center gap-1.5 ${
+                              currentRole === 'ADMIN'
+                                ? 'bg-primary text-white border-primary shadow-xs'
+                                : 'border-border bg-surface hover:bg-surface-muted text-text'
+                            }`}
+                          >
+                            <Shield className="w-3.5 h-3.5" />
+                            <span>Admin Console</span>
+                            {currentRole === 'ADMIN' && <Check className="w-3 h-3 text-white" strokeWidth={2.5} />}
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="p-3 rounded-xl bg-surface-muted border border-border/80 flex items-center gap-2.5 text-xs text-text-secondary">
+                      <Lock className="w-4 h-4 text-text-tertiary shrink-0" strokeWidth={1.75} />
+                      <span>
+                        Administrative & HR consoles are restricted. Access requires authorization from people operations.
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             )}

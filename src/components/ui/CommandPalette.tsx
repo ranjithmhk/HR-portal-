@@ -244,15 +244,19 @@ export const CommandPalette: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -12 }}
             transition={{ duration: 0.18, ease: 'easeOut' }}
-            className="relative w-full max-w-2xl bg-surface rounded-2xl shadow-2xl border border-border overflow-hidden z-10"
+            className="relative w-full max-w-2xl bg-surface rounded-2xl shadow-2xl border border-border overflow-hidden z-10 overscroll-contain"
             role="dialog"
             aria-modal="true"
+            aria-label="Command palette"
           >
             {/* Search Input Bar */}
             <div className="p-4 border-b border-border flex items-center gap-3 bg-surface">
               <Search className="w-5 h-5 text-primary shrink-0" strokeWidth={1.75} />
               <input
                 type="text"
+                name="command-search"
+                autoComplete="off"
+                spellCheck={false}
                 autoFocus
                 value={search}
                 onChange={e => {
@@ -260,7 +264,8 @@ export const CommandPalette: React.FC = () => {
                   setSelectedIndex(0);
                 }}
                 onKeyDown={handleKeyDown}
-                placeholder="Search people, pages, policies, or actions... (Esc to close)"
+                placeholder="Search people, pages, policies, or actions… (Esc to close)"
+                aria-label="Search people, pages, policies, or actions"
                 className="flex-1 bg-transparent text-sm text-text placeholder:text-text-tertiary focus:outline-none"
               />
               <kbd className="hidden sm:inline-block text-[11px] font-mono px-2 py-0.5 rounded bg-surface-muted border border-border text-text-tertiary">
@@ -269,10 +274,10 @@ export const CommandPalette: React.FC = () => {
             </div>
 
             {/* Results List */}
-            <div className="max-h-[380px] overflow-y-auto p-2 divide-y divide-border/40">
+            <div className="max-h-[380px] overflow-y-auto p-2 divide-y divide-border/40 overscroll-contain">
               {filteredItems.length === 0 ? (
                 <div className="py-12 text-center text-xs text-text-secondary">
-                  No matching results found for "{search}".
+                  No matching results found for “{search}”.
                 </div>
               ) : (
                 filteredItems.map((item, idx) => {

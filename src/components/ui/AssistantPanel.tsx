@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { X, Sparkles, Send, Bot, User as UserIcon, RefreshCw } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Sparkles, Send, Bot, User as UserIcon, Minus } from 'lucide-react';
 import { useStore } from '../../context/StoreContext';
 
 interface Message {
@@ -78,114 +79,154 @@ export const AssistantPanel: React.FC = () => {
     }, 450);
   };
 
-  if (!aiAssistantOpen) return null;
-
   return (
-    <aside
-      className="w-[400px] shrink-0 border-l border-border bg-surface flex flex-col h-[calc(100vh-115px)] sticky top-[115px] shadow-lg z-20 transition-all duration-200"
-      aria-label="AI Assistant Panel"
-    >
-      {/* Header */}
-      <div className="p-4 border-b border-border bg-surface-muted/50 flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg zoho-zia-gradient flex items-center justify-center text-white shadow-sm">
-            <Sparkles className="w-4 h-4 text-[#FED600]" strokeWidth={2} />
-          </div>
-          <div>
-            <div className="flex items-center gap-1.5">
-              <h3 className="font-heading font-bold text-sm text-text">Zia AI Assistant</h3>
-              <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-spark-50 text-spark">PRO</span>
-            </div>
-            <p className="text-[11px] text-text-secondary">Powered by Enterprise Knowledge Graph</p>
-          </div>
-        </div>
-        <button
+    <>
+      {/* Floating Copilot Trigger Button at Bottom Right */}
+      {!aiAssistantOpen && (
+        <motion.button
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0, opacity: 0 }}
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.95 }}
           onClick={toggleAiAssistant}
-          className="p-1.5 text-text-tertiary hover:text-text rounded-md hover:bg-surface-muted transition-colors"
-          aria-label="Close assistant"
+          className="fixed bottom-20 right-4 md:bottom-8 md:right-8 z-50 h-11 px-4 rounded-full hero-gradient text-white text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 select-none"
+          aria-label="Open Copilot Assistant"
         >
-          <X className="w-4 h-4" strokeWidth={1.75} />
-        </button>
-      </div>
+          <Sparkles className="w-4 h-4 text-white" strokeWidth={2} />
+          <span>Copilot</span>
+        </motion.button>
+      )}
 
-      {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.map(msg => (
-          <div
-            key={msg.id}
-            className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
+      {/* Sticky Floating Chat Window at Bottom Right */}
+      <AnimatePresence>
+        {aiAssistantOpen && (
+          <motion.aside
+            initial={{ opacity: 0, y: 24, scale: 0.94 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 24, scale: 0.94 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed bottom-20 right-4 md:bottom-8 md:right-8 z-50 w-[calc(100vw-2rem)] sm:w-[420px] h-[580px] max-h-[calc(100vh-6rem)] rounded-2xl border border-border bg-surface/95 backdrop-blur-xl shadow-2xl flex flex-col overflow-hidden"
+            aria-label="AI Assistant Panel"
           >
-            <div className="flex items-center gap-1.5 mb-1 px-1">
-              {msg.sender === 'ai' ? (
-                <>
-                  <Bot className="w-3.5 h-3.5 text-primary" strokeWidth={1.75} />
-                  <span className="text-[11px] font-semibold text-primary">MHK AI</span>
-                </>
-              ) : (
-                <>
-                  <span className="text-[11px] font-semibold text-text-secondary">You</span>
-                  <UserIcon className="w-3.5 h-3.5 text-text-secondary" strokeWidth={1.75} />
-                </>
-              )}
-              <span className="text-[10px] text-text-tertiary">{msg.timestamp}</span>
-            </div>
-
-            <div
-              className={`p-3.5 rounded-2xl max-w-[90%] text-xs leading-relaxed shadow-sm ${
-                msg.sender === 'user'
-                  ? 'bg-primary text-white rounded-tr-none'
-                  : 'bg-surface-muted text-text border border-border rounded-tl-none'
-              }`}
-            >
-              {msg.text}
-            </div>
-
-            {msg.suggestions && (
-              <div className="flex flex-wrap gap-1.5 mt-2.5 max-w-[95%]">
-                {msg.suggestions.map((sugg, i) => (
-                  <button
-                    key={i}
-                    onClick={() => handleSend(sugg)}
-                    className="text-[11px] px-2.5 py-1 rounded-full bg-primary-50 text-primary border border-primary-100 hover:bg-primary-100 dark:bg-primary-50/20 dark:border-primary-300/30 transition-colors text-left"
-                  >
-                    {sugg}
-                  </button>
-                ))}
+            {/* Header */}
+            <div className="p-3.5 border-b border-border bg-surface-muted/50 flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full hero-gradient flex items-center justify-center text-white shadow-sm">
+                  <Sparkles className="w-4 h-4 text-white" strokeWidth={2} />
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <h3 className="font-heading font-bold text-sm text-text">MHK Intelligence</h3>
+                    <span className="w-2 h-2 rounded-full bg-success animate-pulse" title="Online" />
+                  </div>
+                  <p className="text-[11px] text-text-secondary">AI Copilot · Ready to assist</p>
+                </div>
               </div>
-            )}
-          </div>
-        ))}
-      </div>
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={toggleAiAssistant}
+                  className="p-1.5 text-text-tertiary hover:text-text rounded-md hover:bg-surface-muted transition-colors"
+                  aria-label="Minimize assistant"
+                  title="Minimize"
+                >
+                  <Minus className="w-4 h-4" strokeWidth={1.75} />
+                </button>
+                <button
+                  onClick={toggleAiAssistant}
+                  className="p-1.5 text-text-tertiary hover:text-text rounded-md hover:bg-surface-muted transition-colors"
+                  aria-label="Close assistant"
+                  title="Close"
+                >
+                  <X className="w-4 h-4" strokeWidth={1.75} />
+                </button>
+              </div>
+            </div>
 
-      {/* Input */}
-      <div className="p-3 border-t border-border bg-surface">
-        <form
-          onSubmit={e => {
-            e.preventDefault();
-            handleSend();
-          }}
-          className="flex items-center gap-2"
-        >
-          <input
-            type="text"
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            placeholder="Ask about policies, leaves, tasks..."
-            className="flex-1 h-10 px-3 text-xs rounded-input border border-border bg-surface-muted focus:bg-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-text placeholder:text-text-tertiary"
-          />
-          <button
-            type="submit"
-            disabled={!input.trim()}
-            className="w-10 h-10 rounded-input hero-gradient text-white flex items-center justify-center shrink-0 disabled:opacity-40 shadow-sm"
-            aria-label="Send message"
-          >
-            <Send className="w-4 h-4" strokeWidth={1.75} />
-          </button>
-        </form>
-        <p className="text-[10px] text-text-tertiary text-center mt-2">
-          Confidential · Internal HR knowledge base v4.2
-        </p>
-      </div>
-    </aside>
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              {messages.map(msg => (
+                <div
+                  key={msg.id}
+                  className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
+                >
+                  <div className="flex items-center gap-1.5 mb-1 px-1">
+                    {msg.sender === 'ai' ? (
+                      <>
+                        <Bot className="w-3.5 h-3.5 text-primary" strokeWidth={1.75} />
+                        <span className="text-[11px] font-semibold text-primary">MHK AI</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-[11px] font-semibold text-text-secondary">You</span>
+                        <UserIcon className="w-3.5 h-3.5 text-text-secondary" strokeWidth={1.75} />
+                      </>
+                    )}
+                    <span className="text-[10px] text-text-tertiary">{msg.timestamp}</span>
+                  </div>
+
+                  <div
+                    className={`p-3.5 rounded-2xl max-w-[90%] text-xs leading-relaxed shadow-sm ${
+                      msg.sender === 'user'
+                        ? 'bg-primary text-white rounded-tr-none'
+                        : 'bg-surface-muted text-text border border-border rounded-tl-none'
+                    }`}
+                  >
+                    {msg.text}
+                  </div>
+
+                  {msg.suggestions && (
+                    <div className="flex flex-wrap gap-1.5 mt-2.5 max-w-[95%]">
+                      {msg.suggestions.map((sugg, i) => (
+                        <button
+                          key={i}
+                          onClick={() => handleSend(sugg)}
+                          className="text-[11px] px-2.5 py-1 rounded-full bg-primary-50 text-primary border border-primary-100 hover:bg-primary-100 dark:bg-primary-50/20 dark:border-primary-300/30 transition-colors text-left"
+                        >
+                          {sugg}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Input */}
+            <div className="p-3 border-t border-border bg-surface">
+              <form
+                onSubmit={e => {
+                  e.preventDefault();
+                  handleSend();
+                }}
+                className="flex items-center gap-2"
+              >
+                <input
+                  type="text"
+                  name="chat-input"
+                  autoComplete="off"
+                  value={input}
+                  onChange={e => setInput(e.target.value)}
+                  placeholder="Ask about policies, leaves, tasks…"
+                  aria-label="Ask about policies, leaves, or tasks"
+                  className="flex-1 h-10 px-3 text-xs rounded-input border border-border bg-surface-muted focus:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-primary text-text placeholder:text-text-tertiary"
+                />
+                <button
+                  type="submit"
+                  disabled={!input.trim()}
+                  className="w-10 h-10 rounded-input hero-gradient text-white flex items-center justify-center shrink-0 disabled:opacity-40 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  aria-label="Send message"
+                >
+                  <Send className="w-4 h-4" strokeWidth={1.75} />
+                </button>
+              </form>
+              <p className="text-[10px] text-text-tertiary text-center mt-2 tabular-nums">
+                Confidential · Internal HR knowledge base v4.2
+              </p>
+            </div>
+          </motion.aside>
+        )}
+      </AnimatePresence>
+    </>
   );
 };

@@ -64,8 +64,8 @@ export const MHKLogo: React.FC<MHKLogoProps> = ({
         {/* HR Portal Pill Badge */}
         {showBadge && (
           <div className="hidden sm:flex items-center pl-3 border-l border-border">
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-[#F0F7FC] text-[#056CB8] border border-[#DCEEFA] flex items-center gap-1.5 shadow-2xs font-sans">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#EE0014]" />
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wider uppercase bg-surface-muted text-text-secondary border border-border flex items-center gap-1.5 font-sans">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
               {badgeText}
             </span>
           </div>

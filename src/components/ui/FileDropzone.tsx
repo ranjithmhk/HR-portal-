@@ -89,10 +89,10 @@ export const FileDropzone: React.FC<FileDropzoneProps> = ({
       />
 
       {selectedFile ? (
-        <div className="flex items-center justify-between p-3 rounded-lg bg-surface border border-border">
+        <div className="flex items-center justify-between p-3 rounded-xl bg-surface border border-border">
           <div className="flex items-center gap-3 text-left">
-            <div className="w-10 h-10 rounded-lg bg-[#EDFBF4] text-[#00A859] flex items-center justify-center shrink-0">
-              <CheckCircle2 className="w-5 h-5 text-[#00A859]" strokeWidth={1.75} />
+            <div className="w-10 h-10 rounded-full bg-success/10 text-success flex items-center justify-center shrink-0">
+              <CheckCircle2 className="w-5 h-5 text-success" strokeWidth={1.75} />
             </div>
             <div className="min-w-0">
               <p className="text-sm font-semibold text-text truncate max-w-xs">{selectedFile.name}</p>
@@ -102,7 +102,7 @@ export const FileDropzone: React.FC<FileDropzoneProps> = ({
           <button
             type="button"
             onClick={handleRemove}
-            className="p-1.5 text-text-tertiary hover:text-[#EE0014] rounded-md hover:bg-surface-muted transition-colors"
+            className="p-1.5 text-text-tertiary hover:text-danger rounded-md hover:bg-surface-muted transition-colors"
           >
             <X className="w-4 h-4" strokeWidth={1.75} />
           </button>

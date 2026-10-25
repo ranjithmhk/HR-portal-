@@ -121,12 +121,13 @@ export function DataTable<T>({
                 <th className="w-12 px-4 py-3 text-center">
                   <input
                     type="checkbox"
+                    aria-label="Select all rows"
                     checked={allSelected}
                     ref={input => {
                       if (input) input.indeterminate = someSelected;
                     }}
                     onChange={handleSelectAll}
-                    className="w-4 h-4 rounded text-primary focus:ring-primary focus:ring-offset-0 border-border cursor-pointer"
+                    className="w-4 h-4 rounded text-primary focus:ring-primary focus:ring-offset-0 border-border cursor-pointer focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
                   />
                 </th>
               )}
@@ -175,9 +176,10 @@ export function DataTable<T>({
                     <td className="w-12 px-4 py-3 text-center" onClick={e => e.stopPropagation()}>
                       <input
                         type="checkbox"
+                        aria-label={`Select row ${id}`}
                         checked={isSelected}
                         onChange={e => handleSelectRow(id, e as any)}
-                        className="w-4 h-4 rounded text-primary focus:ring-primary focus:ring-offset-0 border-border cursor-pointer"
+                        className="w-4 h-4 rounded text-primary focus:ring-primary focus:ring-offset-0 border-border cursor-pointer focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
                       />
                     </td>
                   )}

@@ -53,44 +53,34 @@ export const AppShell: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-bg text-text antialiased font-sans">
-      {/* Zoho Signature 4-Color Brand Stripe (Red, Yellow, Green, Blue) */}
-      <div className="h-[3px] w-full zoho-brand-stripe shrink-0 relative z-50 shadow-xs" />
-
-      {/* Row 1: Header (64px) - Higher z-axis so dropdowns float over Nav Bar */}
-      <div className="relative z-50">
+      {/* Sticky Top Header & Navigation Bar (Always accessible from anywhere) */}
+      <div className="sticky top-0 z-40 bg-surface/90 backdrop-blur-md shadow-xs">
         <TopHeader />
+        <div className="hidden md:block">
+          <NavBar />
+        </div>
       </div>
 
-      {/* Row 2: Nav Bar with Full-Window Mega-menus (48px) */}
-      <div className="hidden md:block relative z-30">
-        <NavBar />
-      </div>
-
-      {/* Main Layout Area: Center container + Right-docked AI Assistant (pushing content) */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Main Content Area */}
-        <main
-          className={`flex-1 transition-all duration-200 overflow-y-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 max-w-7xl mx-auto w-full pb-20 md:pb-10`}
+      {/* Main Content Area */}
+      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 max-w-7xl mx-auto w-full pb-24 md:pb-12">
+        <motion.div
+          key={location.pathname}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
         >
-          <motion.div
-            key={location.pathname}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
-          >
-            <Outlet />
-          </motion.div>
-        </main>
+          <Outlet />
+        </motion.div>
+      </main>
 
-        {/* AI Assistant docked 400px panel that pushes content on desktop */}
-        <AssistantPanel />
-      </div>
+      {/* Sticky Floating Copilot & Assistant Chat at Bottom */}
+      <AssistantPanel />
 
       {/* Command Palette (⌘K) */}
       <CommandPalette />
 
       {/* Mobile Bottom Tab Bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-white/95 backdrop-blur-md text-text border-t border-border flex items-center justify-around z-40 px-2 shadow-[0_-2px_10px_rgba(0,0,0,0.04)]">
+      <nav aria-label="Mobile Navigation" className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface/95 backdrop-blur-md text-text border-t border-border flex items-center justify-around z-40 px-2 shadow-[0_-2px_10px_rgba(0,0,0,0.04)]">
         {mobileNavItems.map(item => {
           const isActive = location.pathname === item.href;
           return (
@@ -99,7 +89,8 @@ export const AppShell: React.FC = () => {
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.92 }}
               onClick={() => navigate(item.href)}
-              className={`flex flex-col items-center justify-center w-16 h-full transition-colors ${
+              aria-label={item.label}
+              className={`flex flex-col items-center justify-center w-16 h-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg ${
                 isActive ? 'text-primary font-semibold' : 'text-text-secondary hover:text-text'
               }`}
             >
@@ -113,12 +104,13 @@ export const AppShell: React.FC = () => {
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.92 }}
           onClick={() => setMobileMenuOpen(true)}
-          className="flex flex-col items-center justify-center w-16 h-full text-text-secondary hover:text-text"
+          aria-label="Open more navigation options"
+          className="flex flex-col items-center justify-center w-16 h-full text-text-secondary hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
         >
           <Menu className="w-5 h-5" strokeWidth={1.75} />
           <span className="text-[10px] mt-1 font-medium">More</span>
         </motion.button>
-      </div>
+      </nav>
 
       {/* Mobile Full-Screen Sheet for 'More' */}
       <AnimatePresence>
@@ -128,7 +120,10 @@ export const AppShell: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-            className="md:hidden fixed inset-0 z-50 bg-white text-text flex flex-col p-6 overflow-y-auto"
+            className="md:hidden fixed inset-0 z-50 bg-surface text-text flex flex-col p-6 overflow-y-auto overscroll-contain"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile Menu Navigation"
           >
             <div className="flex items-center justify-between pb-6 border-b border-border">
               <MHKLogo variant="header" size="sm" showBadge={false} />
@@ -136,7 +131,8 @@ export const AppShell: React.FC = () => {
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-text hover:bg-surface-muted rounded-lg"
+                aria-label="Close navigation sheet"
+                className="p-2 text-text hover:bg-surface-muted rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <X className="w-6 h-6" strokeWidth={1.75} />
               </motion.button>
@@ -156,10 +152,10 @@ export const AppShell: React.FC = () => {
                       navigate('/employee/home');
                       setMobileMenuOpen(false);
                     }}
-                    className={`p-3 rounded-xl border text-xs font-semibold text-center transition-all ${
+                    className={`p-3 rounded-xl border text-xs font-semibold text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                       currentRole === 'EMPLOYEE'
                         ? 'hero-gradient border-transparent text-white shadow-sm'
-                        : 'bg-[#F8F9FB] border-border text-text-secondary hover:text-text'
+                        : 'bg-surface-muted border-border text-text-secondary hover:text-text'
                     }`}
                   >
                     Employee
@@ -172,10 +168,10 @@ export const AppShell: React.FC = () => {
                       navigate('/hr/overview');
                       setMobileMenuOpen(false);
                     }}
-                    className={`p-3 rounded-xl border text-xs font-semibold text-center transition-all ${
+                    className={`p-3 rounded-xl border text-xs font-semibold text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                       currentRole === 'HR'
                         ? 'hero-gradient border-transparent text-white shadow-sm'
-                        : 'bg-[#F8F9FB] border-border text-text-secondary hover:text-text'
+                        : 'bg-surface-muted border-border text-text-secondary hover:text-text'
                     }`}
                   >
                     HR Console
@@ -188,10 +184,10 @@ export const AppShell: React.FC = () => {
                       navigate('/admin/overview');
                       setMobileMenuOpen(false);
                     }}
-                    className={`p-3 rounded-xl border text-xs font-semibold text-center transition-all ${
+                    className={`p-3 rounded-xl border text-xs font-semibold text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                       currentRole === 'ADMIN'
                         ? 'hero-gradient border-transparent text-white shadow-sm'
-                        : 'bg-[#F8F9FB] border-border text-text-secondary hover:text-text'
+                        : 'bg-surface-muted border-border text-text-secondary hover:text-text'
                     }`}
                   >
                     Admin

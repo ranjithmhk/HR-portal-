@@ -27,8 +27,8 @@ export const Card: React.FC<CardProps> = ({
         transition={{ duration: 0.3, ease: 'easeOut' }}
         className={`relative overflow-hidden rounded-2xl hero-gradient text-white p-6 sm:p-8 shadow-lg border border-white/10 ${className}`}
       >
-        {/* Zoho 4-color brand stripe accent along top */}
-        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#EE0014] via-[#FED600] via-[#00A859] to-[#056CB8] opacity-90" />
+        {/* Clean accent along top */}
+        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary to-primary-300 opacity-90" />
         <div className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-white/5 blur-3xl pointer-events-none" />
         <NetworkWatermark className="text-white/20" opacity={0.12} />
         <div className="relative z-10">{children}</div>

@@ -2,189 +2,150 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Zoho Puvi Typography from Zoho CDN */
-@font-face {
-  font-family: 'Zoho Puvi';
-  font-weight: 400;
-  font-style: normal;
-  src: url('https://static.zohocdn.com/zohofonts/zohopuvi/4.0/Zoho_Puvi_Regular.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Zoho Puvi';
-  font-weight: 500;
-  font-style: normal;
-  src: url('https://static.zohocdn.com/zohofonts/zohopuvi/4.0/Zoho_Puvi_Medium.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Zoho Puvi';
-  font-weight: 600;
-  font-style: normal;
-  src: url('https://static.zohocdn.com/zohofonts/zohopuvi/4.0/Zoho_Puvi_Semibold.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Zoho Puvi';
-  font-weight: 700;
-  font-style: normal;
-  src: url('https://static.zohocdn.com/zohofonts/zohopuvi/4.0/Zoho_Puvi_Bold.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Zoho Puvi';
-  font-weight: 800;
-  font-style: normal;
-  src: url('https://static.zohocdn.com/zohofonts/zohopuvi/4.0/Zoho_Puvi_Bold.woff2') format('woff2');
-  font-display: swap;
-}
-
 @layer base {
   :root {
-    /* Zoho Color Palette (zoho.com reference) */
+    color-scheme: light;
+
+    /* Apple Signature Canvas & Surfaces (apple.in) */
     --ink: #FFFFFF;
-    --ink-2: #F8F9FB;
-    --ink-3: #E7EBF0;
+    --ink-2: #F5F5F7;
+    --ink-3: #E5E5E7;
 
-    /* Zoho Signature Corporate Blue (Navigation highlights & Interactive elements) */
-    --primary: #056CB8;
-    --primary-hover: #045897;
-    --primary-pressed: #034576;
-    --primary-50: #F0F7FC;
-    --primary-100: #DCEEFA;
-    --primary-300: #78B9E6;
+    /* Apple Action Blue (#0071E3) */
+    --primary: #0071E3;
+    --primary-hover: #0077ED;
+    --primary-pressed: #0062C4;
+    --primary-50: #F0F6FD;
+    --primary-100: #E1EDFA;
+    --primary-300: #70B4F5;
 
-    /* Zoho Core Brand Colors */
-    --brand-red: #EE0014;
-    --brand-red-hover: #D60012;
-    --brand-blue: #056CB8;
-    --brand-green: #00A859;
-    --brand-yellow: #FED600;
+    /* Apple System Colors */
+    --magenta: #5856D6;        /* Apple System Purple */
+    --magenta-50: #F3F2FC;
+    --spark: #FF3B30;          /* Apple System Red */
+    --spark-50: #FFF2F2;
 
-    /* Zoho Zia & Accent Hues */
-    --magenta: #582467;
-    --magenta-50: #F7F0FD;
-    --spark: #EE0014; /* Signature Zoho Red for alerts and notification badges */
-    --spark-50: #FDF1F2;
+    /* Apple Canvas & Surface Hierarchy */
+    --bg: #F5F5F7;             /* Apple Signature Light Gray Canvas */
+    --surface: #FFFFFF;        /* Apple Crisp White Surface */
+    --surface-muted: #EBEBEF;  /* Apple Subtle Secondary Surface */
 
-    /* Zoho Clean Canvas & Surfaces */
-    --bg: #F8F9FB;
-    --surface: #FFFFFF;
-    --surface-muted: #F1F4F9;
+    /* Apple SF Pro Typography Colors */
+    --text: #1D1D1F;           /* Apple Iconic Rich Dark Text */
+    --text-secondary: #6E6E73; /* Apple Secondary Label */
+    --text-tertiary: #86868B;  /* Apple Tertiary Caption */
 
-    /* Zoho High-Legibility Typography */
-    --text: #010101;
-    --text-secondary: #333333;
-    --text-tertiary: #6E7787;
-
-    /* Zoho Clean Borders */
-    --border: #E7EBF0;
-    --border-strong: #D2D8E2;
+    /* Apple Hairline Precision Borders */
+    --border: #D2D2D7;         /* Apple Crisp 1px Divider */
+    --border-strong: #B0B0B5;  /* Apple Focused Border */
   }
 
+  html.dark,
   .dark {
-    /* Zoho Light Enterprise Clean Theme */
-    --ink: #FFFFFF;
-    --ink-2: #F8F9FB;
-    --ink-3: #E7EBF0;
-    --bg: #F8F9FB;
-    --surface: #FFFFFF;
-    --surface-muted: #F1F4F9;
-    --text: #010101;
-    --text-secondary: #333333;
-    --text-tertiary: #6E7787;
-    --border: #E7EBF0;
-    --border-strong: #D2D8E2;
-    --primary: #056CB8;
-    --primary-hover: #045897;
-    --primary-pressed: #034576;
-    --primary-50: #F0F7FC;
-    --primary-100: #DCEEFA;
-    --primary-300: #78B9E6;
-    --magenta: #582467;
-    --magenta-50: #F7F0FD;
-    --spark: #EE0014;
-    --spark-50: #FDF1F2;
+    color-scheme: dark;
+
+    /* Apple Dark True Black & Surfaces */
+    --ink: #000000;
+    --ink-2: #1C1C1E;
+    --ink-3: #2C2C2E;
+
+    --bg: #000000;             /* Apple True OLED Black Canvas */
+    --surface: #1C1C1E;        /* Apple System Dark Surface Tile */
+    --surface-muted: #2C2C2E;  /* Apple Elevated Dark Surface */
+
+    /* Apple Dark Typography */
+    --text: #F5F5F7;           /* Apple High-Contrast White */
+    --text-secondary: #A1A1A6; /* Apple Dark Secondary */
+    --text-tertiary: #86868B;  /* Apple Dark Caption */
+
+    /* Apple Dark Hairline Borders */
+    --border: #38383A;         /* Apple Dark 1px Divider */
+    --border-strong: #48484A;
+
+    /* Apple Dark System Accents */
+    --primary: #2997FF;        /* Apple Dark Mode Action Blue */
+    --primary-hover: #47A3FF;
+    --primary-pressed: #1B85ED;
+    --primary-50: rgba(41, 151, 255, 0.12);
+    --primary-100: rgba(41, 151, 255, 0.22);
+    --primary-300: #70B4F5;
+
+    --magenta: #AF52DE;        /* Apple Dark Purple */
+    --magenta-50: rgba(175, 82, 222, 0.15);
+    --spark: #FF453A;          /* Apple Dark Red */
+    --spark-50: rgba(255, 69, 58, 0.15);
   }
 
   * {
     border-color: var(--border);
   }
 
+  html {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     background-color: var(--bg);
     color: var(--text);
-    font-family: 'Zoho Puvi', -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", "Segoe UI", Roboto, system-ui, sans-serif;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.47;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.012em;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Zoho Puvi', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.025em;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.022em;
     color: var(--text);
+    text-wrap: balance;
   }
 }
 
-/* Custom Zoho utilities & animations */
+/* Apple-Grade UI utilities & animations */
 @layer utilities {
-  /* Zoho Homepage Zia & Hero Gradient: Deep blue transitioning through rich purple into vibrant Zoho red */
+  /* Apple Action Blue Button Gradient */
   .hero-gradient {
-    background: linear-gradient(118deg, #0F2042 0%, #173878 28%, #4E1B6E 60%, #9C1F5E 82%, #EE0014 100%);
+    background: linear-gradient(180deg, #0077ED 0%, #0071E3 100%);
   }
 
-  /* Signature 4-Color Zoho Brand Stripe (Red, Yellow, Green, Blue) */
-  .zoho-brand-stripe {
-    background: linear-gradient(90deg, #EE0014 0%, #FED600 33%, #00A859 66%, #056CB8 100%);
+  .dark .hero-gradient {
+    background: linear-gradient(180deg, #339DFF 0%, #2997FF 100%);
   }
 
-  /* Zoho Zia Copilot Gradient */
+  /* Apple Intelligence Wave Gradient */
+  .apple-intelligence-gradient,
   .zoho-zia-gradient {
-    background: linear-gradient(95deg, #056CB8 0%, #68228C 50%, #EE0014 100%);
+    background: linear-gradient(135deg, #0071E3 0%, #5856D6 50%, #FF2D55 100%);
   }
 
-  /* Zoho Gradient Text Fill */
+  /* Clean Apple Gradient Text Fill */
+  .apple-gradient-text,
   .zoho-gradient-text {
-    background: linear-gradient(105deg, #1E448B 0%, #762683 55%, #EE0014 100%);
+    background: linear-gradient(135deg, #0071E3 0%, #5856D6 60%, #FF2D55 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-  }
-
-  /* Zoho Section Divider Line Accent */
-  .zoho-divider-line {
-    position: relative;
-  }
-  .zoho-divider-line::after {
-    content: "";
-    width: 36px;
-    height: 2.5px;
-    background: #EE0014;
-    display: block;
-    margin-top: 8px;
-    border-radius: 2px;
   }
 
   .text-kpi {
     font-size: 32px;
     line-height: 1.1;
     font-variant-numeric: tabular-nums;
-    font-family: 'Zoho Puvi', -apple-system, sans-serif;
-    font-weight: 700;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
   }
 
   .micro-label {
     font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     color: var(--text-secondary);
   }
 
@@ -222,7 +183,7 @@
   animation: pulseGlow 1.8s infinite;
 }
 
-/* Zoho Clean Custom Scrollbars */
+/* Clean Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -231,18 +192,30 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D2D8E2;
+  background: var(--border-strong);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #6E7787;
+  background: var(--text-tertiary);
+}
+
+/* Accessibility & Focus Utilities */
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

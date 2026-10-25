@@ -58,7 +58,7 @@ export const Modal: React.FC<ModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 14 }}
             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className={`relative w-full ${maxWidth} bg-surface rounded-[20px] shadow-2xl border border-border overflow-hidden z-10 my-8`}
+            className={`relative w-full ${maxWidth} bg-surface rounded-[20px] shadow-2xl border border-border overflow-hidden z-10 my-8 overscroll-contain`}
             role="dialog"
             aria-modal="true"
           >
@@ -73,7 +73,7 @@ export const Modal: React.FC<ModalProps> = ({
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={onClose}
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-text-tertiary hover:text-text hover:bg-surface-muted transition-colors shrink-0"
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-text-tertiary hover:text-text hover:bg-surface-muted transition-colors shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   aria-label="Close modal"
                 >
                   <X className="w-5 h-5" strokeWidth={1.75} />
@@ -82,7 +82,7 @@ export const Modal: React.FC<ModalProps> = ({
             )}
 
             {/* Content */}
-            <div className="p-6 max-h-[75vh] overflow-y-auto">{children}</div>
+            <div className="p-6 max-h-[75vh] overflow-y-auto overscroll-contain">{children}</div>
 
             {/* Footer */}
             {footer && (

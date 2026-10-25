@@ -69,15 +69,8 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
           <h1 className="text-2xl sm:text-3xl font-bold text-text tracking-tight font-heading leading-tight">
             {title}
           </h1>
-          {/* Zoho Signature Accent Line Under Big Header */}
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: 40 }}
-            transition={{ duration: 0.35, delay: 0.1 }}
-            className="h-[2.5px] bg-gradient-to-r from-[#EE0014] to-[#FED600] rounded-full mt-2"
-          />
           {subtitle && (
-            <p className="text-sm text-text-secondary mt-2 leading-relaxed max-w-3xl">{subtitle}</p>
+            <p className="text-sm text-text-secondary mt-1.5 leading-relaxed max-w-3xl">{subtitle}</p>
           )}
         </div>
         {actions && (

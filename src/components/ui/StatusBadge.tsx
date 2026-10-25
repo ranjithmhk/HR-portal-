@@ -30,25 +30,25 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
     switch (variant) {
       case 'success':
         return {
-          bg: 'bg-[#EDFBF4]',
-          text: 'text-[#00A859]',
-          dot: 'bg-[#00A859]',
+          bg: 'bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/80 dark:border-emerald-800/40',
+          text: 'text-emerald-700 dark:text-emerald-400',
+          dot: 'bg-emerald-500',
         };
       case 'warning':
         return {
-          bg: 'bg-[#FFF8EE]',
-          text: 'text-[#FF9500]',
-          dot: 'bg-[#FF9500]',
+          bg: 'bg-amber-50 dark:bg-amber-950/40 border border-amber-200/80 dark:border-amber-800/40',
+          text: 'text-amber-700 dark:text-amber-400',
+          dot: 'bg-amber-500',
         };
       case 'danger':
         return {
-          bg: 'bg-[#FDF1F2]',
-          text: 'text-[#EE0014]',
-          dot: 'bg-[#EE0014]',
+          bg: 'bg-red-50 dark:bg-red-950/40 border border-red-200/80 dark:border-red-800/40',
+          text: 'text-red-700 dark:text-red-400',
+          dot: 'bg-red-500',
         };
       case 'info':
         return {
-          bg: 'bg-primary-50',
+          bg: 'bg-primary-50 text-primary border border-primary-100 dark:border-primary-300/30',
           text: 'text-primary',
           dot: 'bg-primary',
         };
@@ -60,7 +60,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
         };
       case 'role-hr':
         return {
-          bg: 'bg-primary-50 text-primary border border-primary-100',
+          bg: 'bg-primary-50 text-primary border border-primary-100 dark:border-primary-300/30',
           text: 'text-primary',
           dot: 'bg-primary',
         };
@@ -73,7 +73,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
       case 'neutral':
       default:
         return {
-          bg: 'bg-surface-muted text-text-secondary',
+          bg: 'bg-surface-muted text-text-secondary border border-border',
           text: 'text-text-secondary',
           dot: 'bg-text-tertiary',
         };

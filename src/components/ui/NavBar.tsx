@@ -570,7 +570,7 @@ export const NavBar: React.FC = () => {
   return (
     <nav
       ref={navRef}
-      className="h-12 w-full bg-white text-text px-4 lg:px-8 border-b border-border relative z-30 select-none shadow-[0_1px_2px_rgba(0,0,0,0.02)] font-sans"
+      className="h-12 w-full bg-surface text-text px-4 lg:px-8 border-b border-border relative z-30 select-none shadow-[0_1px_2px_rgba(0,0,0,0.02)] font-sans"
       aria-label="Main Navigation"
     >
       <div className="max-w-7xl mx-auto h-full flex items-center justify-between">
@@ -669,8 +669,7 @@ export const NavBar: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
-              style={{ backgroundColor: '#FFFFFF' }}
-              className="absolute top-full left-0 right-0 w-full bg-white border-b border-border shadow-[0_20px_50px_rgba(0,0,0,0.12)] z-50 text-text"
+              className="absolute top-full left-0 right-0 w-full bg-surface border-b border-border shadow-popover z-50 text-text"
             >
               <div className="max-w-7xl mx-auto px-4 lg:px-8 py-6">
                 {/* Category Header Strip */}
@@ -687,7 +686,8 @@ export const NavBar: React.FC = () => {
                     whileHover={{ scale: 1.04 }}
                     whileTap={{ scale: 0.96 }}
                     onClick={() => setActiveMenu(null)}
-                    className="text-xs text-text-secondary hover:text-text px-3 py-1 rounded-md hover:bg-surface-muted transition-colors flex items-center gap-1.5 border border-border shadow-xs"
+                    aria-label="Close menu (Escape)"
+                    className="text-xs text-text-secondary hover:text-text px-3 py-1 rounded-md hover:bg-surface-muted transition-colors flex items-center gap-1.5 border border-border shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     <span>Close</span>
                     <kbd className="font-mono text-[10px] bg-surface-muted px-1.5 py-0.5 rounded border border-border text-text-tertiary">ESC</kbd>
@@ -713,7 +713,7 @@ export const NavBar: React.FC = () => {
                         key={item.href}
                         to={item.href}
                         onClick={() => setActiveMenu(null)}
-                        className="block"
+                        className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl"
                       >
                         <motion.div
                           whileHover={{ y: -3, scale: 1.01 }}
@@ -722,7 +722,7 @@ export const NavBar: React.FC = () => {
                           className={`p-4 rounded-xl flex items-start gap-3.5 transition-colors group ${
                             isCurrent
                               ? 'bg-primary-50 border border-primary-300 shadow-xs'
-                              : 'bg-[#F8F9FB] hover:bg-white border border-border hover:border-primary/50 shadow-xs hover:shadow-zoho'
+                              : 'bg-surface-muted hover:bg-surface border border-border hover:border-primary/50 shadow-xs'
                           }`}
                         >
                           <motion.div
@@ -730,7 +730,7 @@ export const NavBar: React.FC = () => {
                             className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
                               isCurrent
                                 ? 'bg-primary text-white shadow-xs'
-                                : 'bg-white text-primary border border-border shadow-2xs group-hover:bg-primary group-hover:text-white group-hover:border-primary'
+                                : 'bg-surface text-primary border border-border shadow-2xs group-hover:bg-primary group-hover:text-white group-hover:border-primary'
                             }`}
                           >
                             {item.icon}

@@ -29,21 +29,17 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#F8F9FB] flex items-center justify-center p-4 relative overflow-hidden select-none font-sans">
+    <div className="min-h-screen w-full bg-[#F5F5F7] dark:bg-black flex items-center justify-center p-4 relative overflow-hidden select-none font-sans">
       {/* Network Motif spreading from center */}
       <NetworkWatermark className="text-primary" opacity={0.04} />
 
       {/* Centered Login Card */}
-      <div className="relative z-10 w-full max-w-[440px] bg-white rounded-[20px] shadow-zoho border border-[#E7EBF0] p-8 sm:p-10 page-transition overflow-hidden">
-        {/* Zoho 4-Color Brand Stripe */}
-        <div className="h-1 w-full zoho-brand-stripe absolute top-0 left-0 right-0" />
-
+      <div className="relative z-10 w-full max-w-[440px] bg-surface rounded-2xl shadow-card border border-border p-8 sm:p-10 page-transition overflow-hidden">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-6 pt-2">
           <MHKLogo variant="card" size="xl" className="mb-3" />
-          <h1 className="text-2xl font-bold text-text font-heading">Welcome back</h1>
-          <div className="w-8 h-[2.5px] bg-gradient-to-r from-[#EE0014] to-[#FED600] rounded-full my-2" />
-          <p className="text-xs text-text-secondary">Sign in to your HR cloud suite</p>
+          <h1 className="text-2xl font-bold text-text font-heading tracking-tight">Welcome back</h1>
+          <p className="text-xs text-text-secondary mt-1">Sign in to your enterprise workforce suite</p>
         </div>
 
         {/* Form */}
@@ -59,8 +55,8 @@ export const LoginPage: React.FC = () => {
               placeholder="e.g. MHK-US"
               required
             />
-            <div className="flex items-center gap-1.5 mt-1.5 text-xs text-[#00A859] font-medium">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#00A859]" strokeWidth={2} />
+            <div className="flex items-center gap-1.5 mt-1.5 text-xs text-success font-medium">
+              <CheckCircle2 className="w-3.5 h-3.5 text-success" strokeWidth={2} />
               <span>Resolved: <strong>MHK Software Private Limited</strong></span>
             </div>
           </div>
@@ -111,11 +107,11 @@ export const LoginPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Submit CTA (Signature Zoho Red Button) */}
+          {/* Submit CTA (Apple Action Blue Button) */}
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full h-11 rounded-btn bg-[#EE0014] hover:bg-[#D60012] text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-xs hover:shadow transition-all disabled:opacity-50 mt-2"
+            className="w-full h-11 rounded-full bg-primary hover:bg-primary-hover text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-xs hover:shadow transition-all disabled:opacity-50 mt-2"
           >
             {isLoading ? 'Signing in...' : 'Sign in →'}
           </button>

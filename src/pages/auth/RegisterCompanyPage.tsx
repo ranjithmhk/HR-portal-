@@ -18,36 +18,32 @@ export const RegisterCompanyPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#F8F9FB] flex items-center justify-center p-4 relative overflow-hidden select-none font-sans">
+    <div className="min-h-screen w-full bg-[#F5F5F7] dark:bg-black flex items-center justify-center p-4 relative overflow-hidden select-none font-sans">
       <NetworkWatermark className="text-primary" opacity={0.04} />
 
-      <div className="relative z-10 w-full max-w-[480px] bg-white rounded-[20px] shadow-zoho border border-[#E7EBF0] p-8 sm:p-10 page-transition overflow-hidden">
-        {/* Zoho 4-Color Brand Stripe */}
-        <div className="h-1 w-full zoho-brand-stripe absolute top-0 left-0 right-0" />
-
+      <div className="relative z-10 w-full max-w-[480px] bg-surface rounded-2xl shadow-card border border-border p-8 sm:p-10 page-transition overflow-hidden">
         <div className="flex flex-col items-center text-center mb-6 pt-2">
           <MHKLogo variant="card" size="xl" className="mb-3" />
-          <h1 className="text-2xl font-bold text-text font-heading">Register Your Enterprise</h1>
-          <div className="w-8 h-[2.5px] bg-gradient-to-r from-[#EE0014] to-[#FED600] rounded-full my-2" />
-          <p className="text-xs text-text-secondary">
-            Deploy the MHK HR & Workforce Management Cloud
+          <h1 className="text-2xl font-bold text-text font-heading tracking-tight">Register Your Enterprise</h1>
+          <p className="text-xs text-text-secondary mt-1">
+            Create your company workforce workspace
           </p>
         </div>
 
         {isDone ? (
           <div className="text-center space-y-4">
-            <div className="w-12 h-12 rounded-full bg-[#E7F6EC] text-[#15803D] flex items-center justify-center mx-auto">
-              <CheckCircle2 className="w-6 h-6" strokeWidth={2} />
+            <div className="w-12 h-12 rounded-full bg-success/10 text-success flex items-center justify-center mx-auto">
+              <CheckCircle2 className="w-6 h-6 text-success" strokeWidth={2} />
             </div>
             <div>
               <h3 className="font-heading font-bold text-base text-text">Workspace Provisioned</h3>
               <p className="text-xs text-text-secondary mt-1 leading-relaxed">
-                Thank you, <strong className="text-text">{companyName}</strong>. Our enterprise provisioning team has sent activation credentials to <strong className="text-text">{workEmail}</strong>.
+                Credentials sent to <strong className="text-text">{workEmail}</strong> for <strong className="text-text">{companyName}</strong>.
               </p>
             </div>
             <button
               onClick={() => navigate('/login')}
-              className="h-10 px-6 rounded-btn bg-primary hover:bg-primary-hover text-white text-xs font-semibold"
+              className="h-10 px-6 rounded-full bg-primary hover:bg-primary-hover text-white text-xs font-semibold"
             >
               Go to Sign In →
             </button>
@@ -110,7 +106,7 @@ export const RegisterCompanyPage: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full h-11 rounded-btn bg-[#EE0014] hover:bg-[#D60012] text-white font-semibold text-sm transition-all shadow-xs hover:shadow mt-2"
+              className="w-full h-11 rounded-full bg-primary hover:bg-primary-hover text-white font-semibold text-sm transition-all shadow-xs hover:shadow mt-2"
             >
               Create Company Workspace →
             </button>

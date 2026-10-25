@@ -566,7 +566,7 @@ export const Leaves: React.FC = () => {
                                     cancelLeaveRequest(req.id);
                                   }
                                 }}
-                                className="text-[11px] font-bold text-[#EE0014] hover:underline"
+                                className="text-[11px] font-semibold text-danger hover:underline"
                               >
                                 Cancel
                               </button>
