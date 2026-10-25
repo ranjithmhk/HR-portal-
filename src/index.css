@@ -24,6 +24,12 @@
     --magenta-50: #F3F2FC;
     --spark: #FF3B30;          /* Apple System Red */
     --spark-50: #FFF2F2;
+    --danger: #FF3B30;
+    --danger-bg: #FFF2F2;
+    --success: #34C759;
+    --success-bg: #EBF9EE;
+    --warning: #FF9500;
+    --warning-bg: #FFF8EE;
 
     /* Apple Canvas & Surface Hierarchy */
     --bg: #F5F5F7;             /* Apple Signature Light Gray Canvas */
@@ -38,42 +44,6 @@
     /* Apple Hairline Precision Borders */
     --border: #D2D2D7;         /* Apple Crisp 1px Divider */
     --border-strong: #B0B0B5;  /* Apple Focused Border */
-  }
-
-  html.dark,
-  .dark {
-    color-scheme: dark;
-
-    /* Apple Dark True Black & Surfaces */
-    --ink: #000000;
-    --ink-2: #1C1C1E;
-    --ink-3: #2C2C2E;
-
-    --bg: #000000;             /* Apple True OLED Black Canvas */
-    --surface: #1C1C1E;        /* Apple System Dark Surface Tile */
-    --surface-muted: #2C2C2E;  /* Apple Elevated Dark Surface */
-
-    /* Apple Dark Typography */
-    --text: #F5F5F7;           /* Apple High-Contrast White */
-    --text-secondary: #A1A1A6; /* Apple Dark Secondary */
-    --text-tertiary: #86868B;  /* Apple Dark Caption */
-
-    /* Apple Dark Hairline Borders */
-    --border: #38383A;         /* Apple Dark 1px Divider */
-    --border-strong: #48484A;
-
-    /* Apple Dark System Accents */
-    --primary: #2997FF;        /* Apple Dark Mode Action Blue */
-    --primary-hover: #47A3FF;
-    --primary-pressed: #1B85ED;
-    --primary-50: rgba(41, 151, 255, 0.12);
-    --primary-100: rgba(41, 151, 255, 0.22);
-    --primary-300: #70B4F5;
-
-    --magenta: #AF52DE;        /* Apple Dark Purple */
-    --magenta-50: rgba(175, 82, 222, 0.15);
-    --spark: #FF453A;          /* Apple Dark Red */
-    --spark-50: rgba(255, 69, 58, 0.15);
   }
 
   * {
@@ -111,10 +81,6 @@
   /* Apple Action Blue Button Gradient */
   .hero-gradient {
     background: linear-gradient(180deg, #0077ED 0%, #0071E3 100%);
-  }
-
-  .dark .hero-gradient {
-    background: linear-gradient(180deg, #339DFF 0%, #2997FF 100%);
   }
 
   /* Apple Intelligence Wave Gradient */

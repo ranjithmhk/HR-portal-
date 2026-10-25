@@ -239,7 +239,7 @@ export const Expenses: React.FC = () => {
         ) : (
           <form onSubmit={handleCreateClaim} className="space-y-4">
             {/* Currency Auto-detection info box */}
-            <div className="p-3.5 rounded-xl bg-primary-50 dark:bg-primary-50/30 border border-primary-100 dark:border-primary-300/30 flex items-start gap-2.5 text-xs text-primary">
+            <div className="p-3.5 rounded-xl bg-primary-50 border border-primary-100 flex items-start gap-2.5 text-xs text-primary">
               <Info className="w-4 h-4 shrink-0 mt-0.5" strokeWidth={1.75} />
               <p className="leading-relaxed">
                 <strong>Auto-detection:</strong> We automatically detect the currency and itemized tax

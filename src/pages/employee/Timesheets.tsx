@@ -209,7 +209,7 @@ export const Timesheets: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-3 rounded-lg bg-primary-50 dark:bg-primary-50/20 border border-primary-100 flex items-center justify-between">
+              <div className="p-3 rounded-lg bg-primary-50 border border-primary-100 flex items-center justify-between">
                 <span className="text-xs font-bold text-primary">Total Billable:</span>
                 <span className="font-heading font-extrabold text-lg text-primary">{totalHours} Hours</span>
               </div>
@@ -247,7 +247,7 @@ export const Timesheets: React.FC = () => {
                     }}
                     className={`p-3 rounded-xl border cursor-pointer transition-all ${
                       activePeriodId === p.id
-                        ? 'bg-primary-50 dark:bg-primary-50/30 border-primary ring-2 ring-primary/20'
+                        ? 'bg-primary-50 border-primary ring-2 ring-primary/20'
                         : 'bg-surface border-border hover:bg-surface-muted'
                     }`}
                   >

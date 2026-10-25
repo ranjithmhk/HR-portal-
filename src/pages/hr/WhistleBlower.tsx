@@ -51,7 +51,7 @@ export const WhistleBlower: React.FC = () => {
                   key={rep.token}
                   onClick={() => setSelectedToken(rep.token)}
                   className={`p-4 cursor-pointer transition-colors space-y-2 ${
-                    isSelected ? 'bg-primary-50/50 dark:bg-primary-50/20' : 'hover:bg-surface-muted/60'
+                    isSelected ? 'bg-primary-50/50' : 'hover:bg-surface-muted/60'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -126,7 +126,7 @@ export const WhistleBlower: React.FC = () => {
 
               {/* Internal Notes History */}
               {selectedReport.internalNotes && (
-                <div className="p-3.5 rounded-xl bg-primary-50 dark:bg-primary-50/20 border border-primary-100 text-xs space-y-1">
+                <div className="p-3.5 rounded-xl bg-primary-50 border border-primary-100 text-xs space-y-1">
                   <span className="font-bold text-primary block">Investigative Audit Notes:</span>
                   <p className="text-text leading-relaxed">{selectedReport.internalNotes}</p>
                 </div>

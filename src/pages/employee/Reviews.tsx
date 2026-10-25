@@ -98,7 +98,7 @@ export const Reviews: React.FC = () => {
                   </div>
 
                   {/* Manager Feedback Card */}
-                  <div className="p-4 rounded-xl bg-primary-50 dark:bg-primary-50/20 border border-primary-100 dark:border-primary-300/30 space-y-2">
+                  <div className="p-4 rounded-xl bg-primary-50 border border-primary-100 space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="micro-label text-primary">Manager Appraisal ({currentUser.manager})</span>
                       {cycle.managerRating ? (

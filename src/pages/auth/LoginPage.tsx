@@ -29,7 +29,7 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#F5F5F7] dark:bg-black flex items-center justify-center p-4 relative overflow-hidden select-none font-sans">
+    <div className="min-h-screen w-full bg-[#F5F5F7] flex items-center justify-center p-4 relative overflow-hidden select-none font-sans">
       {/* Network Motif spreading from center */}
       <NetworkWatermark className="text-primary" opacity={0.04} />
 

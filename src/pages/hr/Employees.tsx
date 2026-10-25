@@ -151,9 +151,9 @@ export const Employees: React.FC = () => {
     {
       key: 'actions',
       header: 'Actions',
-      className: 'text-right',
+      className: 'text-right pr-4',
       render: u => (
-        <div className="flex items-center justify-end gap-1.5" onClick={e => e.stopPropagation()}>
+        <div className="flex items-center justify-end gap-1.5 pr-2" onClick={e => e.stopPropagation()}>
           <button
             onClick={() => setSelectedProfile(u)}
             className="p-1.5 text-text-secondary hover:text-primary rounded hover:bg-surface-muted"
@@ -172,7 +172,7 @@ export const Employees: React.FC = () => {
             onClick={() => {
               if (confirm(`Remove employee ${u.name}?`)) removeUser(u.id);
             }}
-            className="p-1.5 text-text-secondary hover:text-[#C81E3A] rounded hover:bg-[#FDECEF]"
+            className="p-1.5 text-text-secondary hover:text-red-600 rounded hover:bg-red-50"
             title="Remove"
           >
             <Trash2 className="w-4 h-4" />

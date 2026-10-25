@@ -98,7 +98,7 @@ export const Clients: React.FC = () => {
                   key={client.id}
                   onClick={() => setSelectedClientId(client.id)}
                   className={`p-4 cursor-pointer transition-colors space-y-2 ${
-                    isSelected ? 'bg-primary-50/50 dark:bg-primary-50/20' : 'hover:bg-surface-muted/60'
+                    isSelected ? 'bg-primary-50/50' : 'hover:bg-surface-muted/60'
                   }`}
                 >
                   <div className="flex items-center justify-between">

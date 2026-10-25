@@ -16,8 +16,6 @@ import {
   Users,
   Settings,
   Sparkles,
-  Sun,
-  Moon,
 } from 'lucide-react';
 import { useStore } from '../../context/StoreContext';
 
@@ -30,8 +28,6 @@ export const CommandPalette: React.FC = () => {
     clockOut,
     isClockedIn,
     toggleAiAssistant,
-    isDarkMode,
-    toggleDarkMode,
   } = useStore();
 
   const navigate = useNavigate();
@@ -60,13 +56,6 @@ export const CommandPalette: React.FC = () => {
       category: 'Actions',
       icon: <Sparkles className="w-4 h-4 text-magenta" strokeWidth={1.75} />,
       action: () => toggleAiAssistant(),
-    },
-    {
-      id: 'act-theme',
-      title: isDarkMode ? 'Switch to Light Theme' : 'Switch to Dark Theme',
-      category: 'Actions',
-      icon: isDarkMode ? <Sun className="w-4 h-4 text-spark" strokeWidth={1.75} /> : <Moon className="w-4 h-4 text-primary" strokeWidth={1.75} />,
-      action: () => toggleDarkMode(),
     },
 
     // Employee Destinations
@@ -293,13 +282,13 @@ export const CommandPalette: React.FC = () => {
                       }}
                       onMouseEnter={() => setSelectedIndex(idx)}
                       className={`px-3 py-2.5 rounded-lg flex items-center justify-between gap-3 cursor-pointer transition-colors ${
-                        isSelected ? 'bg-primary-50 dark:bg-primary-50/40 text-primary' : 'hover:bg-surface-muted/70 text-text'
+                        isSelected ? 'bg-primary-50 text-primary' : 'hover:bg-surface-muted/70 text-text'
                       }`}
                     >
                       <div className="flex items-center gap-3 min-w-0">
                         <div
                           className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
-                            isSelected ? 'bg-primary text-white shadow-sm' : 'bg-surface-muted text-text-secondary'
+                            isSelected ? 'bg-primary text-white shadow-sm [&_svg]:!text-white [&_svg]:!stroke-white' : 'bg-surface-muted text-text-secondary'
                           }`}
                         >
                           {item.icon}

@@ -59,7 +59,7 @@ export const TeamReviews: React.FC = () => {
                   onClick={() => setSelectedReport(report)}
                   className={`p-4 rounded-xl border cursor-pointer transition-all ${
                     isSelected
-                      ? 'bg-primary-50 dark:bg-primary-50/30 border-primary ring-2 ring-primary/20 shadow-sm'
+                      ? 'bg-primary-50 border-primary ring-2 ring-primary/20 shadow-sm'
                       : 'bg-surface border-border hover:bg-surface-muted'
                   }`}
                 >

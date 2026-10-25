@@ -5,8 +5,6 @@ import {
   Search,
   Sparkles,
   Bell,
-  Sun,
-  Moon,
   ChevronDown,
   User,
   Shield,
@@ -28,8 +26,6 @@ export const TopHeader: React.FC = () => {
     currentRole,
     switchRole,
     setCommandPaletteOpen,
-    isDarkMode,
-    toggleDarkMode,
     tasks,
     supportRequests,
   } = useStore();
@@ -105,14 +101,12 @@ export const TopHeader: React.FC = () => {
           >
             <Bell className="w-4 h-4 text-text-secondary hover:text-primary" strokeWidth={1.75} />
             {totalOrangeBadge > 0 && (
-              <motion.span
-                initial={{ scale: 0.8 }}
-                animate={{ scale: [1, 1.15, 1] }}
-                transition={{ repeat: Infinity, duration: 2.2 }}
-                className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-danger text-white text-[10px] font-bold flex items-center justify-center shadow-xs tabular-nums"
+              <span
+                className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-[#FF3B30] text-white text-[10px] font-bold flex items-center justify-center shadow-xs tabular-nums leading-none ring-2 ring-surface select-none"
+                aria-label={`${totalOrangeBadge} unread notifications`}
               >
                 {totalOrangeBadge}
-              </motion.span>
+              </span>
             )}
           </motion.button>
 
@@ -130,7 +124,7 @@ export const TopHeader: React.FC = () => {
                   <span className="font-heading font-bold text-xs uppercase tracking-wide text-text-secondary">
                     Notifications
                   </span>
-                  <span className="text-[11px] text-danger font-bold tabular-nums">{totalOrangeBadge} New</span>
+                  <span className="text-[11px] text-[#FF3B30] font-bold tabular-nums">{totalOrangeBadge} New</span>
                 </div>
                 <div className="py-2 space-y-2 max-h-64 overflow-y-auto">
                   <motion.div
@@ -163,12 +157,12 @@ export const TopHeader: React.FC = () => {
                     }}
                     className="p-2.5 rounded-xl bg-surface-muted transition-colors flex items-start gap-2.5 cursor-pointer"
                   >
-                    <div className="w-6 h-6 rounded-full bg-danger/10 text-danger flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-red-50 text-[#FF3B30] flex items-center justify-center shrink-0 mt-0.5">
                       <AlertTriangle className="w-3.5 h-3.5" strokeWidth={1.75} />
                     </div>
                     <div>
                       <div className="flex items-center justify-between gap-2">
-                        <p className="text-xs font-semibold text-danger">Emergency Contacts Incomplete</p>
+                        <p className="text-xs font-semibold text-[#FF3B30]">Emergency Contacts Incomplete</p>
                         <span className="text-[10px] text-text-tertiary">1h ago</span>
                       </div>
                       <p className="text-[11px] text-text-secondary mt-0.5">
@@ -302,25 +296,11 @@ export const TopHeader: React.FC = () => {
 
                 <div className="pt-1 border-t border-border mt-1">
                   <button
-                    onClick={toggleDarkMode}
-                    className="w-full px-3 py-2 rounded-lg text-xs font-medium text-text hover:bg-surface-muted flex items-center justify-between transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                  >
-                    <span className="flex items-center gap-2">
-                      {isDarkMode ? (
-                        <Sun className="w-4 h-4 text-spark" strokeWidth={1.75} />
-                      ) : (
-                        <Moon className="w-4 h-4 text-primary" strokeWidth={1.75} />
-                      )}
-                      <span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
-                    </span>
-                  </button>
-
-                  <button
                     onClick={() => {
                       navigate('/login');
                       setAvatarOpen(false);
                     }}
-                    className="w-full px-3 py-2 rounded-lg text-xs font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 flex items-center gap-2 transition-colors text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
+                    className="w-full px-3 py-2 rounded-lg text-xs font-medium text-red-600 hover:bg-red-50 flex items-center gap-2 transition-colors text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
                   >
                     <LogOut className="w-4 h-4" strokeWidth={1.75} />
                     <span>Sign Out</span>

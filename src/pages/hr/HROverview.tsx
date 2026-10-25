@@ -265,7 +265,7 @@ export const HROverview: React.FC = () => {
               <div className="flex items-center justify-between">
                 <span className="micro-label text-text-secondary">Incomplete Contacts</span>
                 {allReminded ? (
-                  <span className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">All Reminded ✓</span>
+                  <span className="text-[11px] font-semibold text-emerald-700">All Reminded ✓</span>
                 ) : (
                   <button
                     onClick={handleRemindAll}
@@ -285,7 +285,7 @@ export const HROverview: React.FC = () => {
                     </div>
 
                     {remindedMap[u.id] || allReminded ? (
-                      <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">Sent</span>
+                      <span className="text-[10px] font-semibold text-emerald-700">Sent</span>
                     ) : (
                       <button
                         onClick={() => handleRemind(u.id)}
@@ -305,7 +305,7 @@ export const HROverview: React.FC = () => {
               <div className="space-y-2 text-xs">
                 <div className="p-2.5 rounded-lg bg-surface-muted flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-magenta-50 dark:bg-magenta-50/20 text-magenta flex items-center justify-center shrink-0">
+                    <div className="w-7 h-7 rounded-lg bg-magenta-50 text-magenta flex items-center justify-center shrink-0">
                       <Cake className="w-3.5 h-3.5" strokeWidth={1.75} />
                     </div>
                     <div>

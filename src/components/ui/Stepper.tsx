@@ -41,7 +41,7 @@ export const Stepper: React.FC<StepperProps> = ({
                     isCompleted
                       ? 'bg-[#15803D] text-white shadow-sm'
                       : isActive
-                      ? 'hero-gradient text-white ring-4 ring-primary-100 dark:ring-primary-500/20 shadow-md'
+                      ? 'hero-gradient text-white ring-4 ring-primary-100 shadow-md'
                       : 'bg-surface-muted text-text-tertiary border border-border'
                   }`}
                 >

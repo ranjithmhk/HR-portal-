@@ -45,7 +45,7 @@ export const StatStrip: React.FC<StatStripProps> = ({ stats, className = '' }) =
           whileTap={stat.onClick ? { scale: 0.985 } : undefined}
           className={`p-5 flex flex-col justify-between transition-colors relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset ${
             stat.hasGradientAccent
-              ? 'bg-gradient-to-br from-primary-50/60 to-magenta-50/40 dark:from-primary-50/20 dark:to-magenta-50/10'
+              ? 'bg-gradient-to-br from-primary-50/60 to-magenta-50/40'
               : 'hover:bg-surface-muted/40'
           } ${stat.onClick ? 'cursor-pointer' : ''}`}
         >
@@ -59,7 +59,7 @@ export const StatStrip: React.FC<StatStripProps> = ({ stats, className = '' }) =
               className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
                 stat.hasGradientAccent
                   ? 'bg-primary text-white shadow-sm'
-                  : 'bg-primary-50 text-primary dark:bg-primary-50/40'
+                  : 'bg-primary-50 text-primary'
               }`}
             >
               {stat.icon}
@@ -72,9 +72,9 @@ export const StatStrip: React.FC<StatStripProps> = ({ stats, className = '' }) =
               <span
                 className={`text-xs font-semibold px-2 py-0.5 rounded-full shrink-0 tabular-nums ${
                   stat.delta.danger
-                    ? 'bg-[#FDECEF] text-[#C81E3A] dark:bg-red-950/40 dark:text-red-400 dark:border dark:border-red-800/40'
+                    ? 'bg-red-50 text-red-700 border border-red-200'
                     : stat.delta.positive
-                    ? 'bg-[#E7F6EC] text-[#15803D] dark:bg-emerald-950/40 dark:text-emerald-400 dark:border dark:border-emerald-800/40'
+                    ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                     : 'bg-surface-muted text-text-secondary border border-border'
                 }`}
               >

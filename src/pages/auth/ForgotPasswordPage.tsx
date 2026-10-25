@@ -14,7 +14,7 @@ export const ForgotPasswordPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#F5F5F7] dark:bg-black flex items-center justify-center p-4 relative overflow-hidden select-none font-sans">
+    <div className="min-h-screen w-full bg-[#F5F5F7] flex items-center justify-center p-4 relative overflow-hidden select-none font-sans">
       <NetworkWatermark className="text-primary" opacity={0.04} />
 
       <div className="relative z-10 w-full max-w-[440px] bg-surface rounded-2xl shadow-card border border-border p-8 sm:p-10 page-transition overflow-hidden">

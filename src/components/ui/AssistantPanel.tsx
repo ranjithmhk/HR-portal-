@@ -90,7 +90,7 @@ export const AssistantPanel: React.FC = () => {
           whileHover={{ scale: 1.05, y: -2 }}
           whileTap={{ scale: 0.95 }}
           onClick={toggleAiAssistant}
-          className="fixed bottom-20 right-4 md:bottom-8 md:right-8 z-50 h-11 px-4 rounded-full hero-gradient text-white text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 select-none"
+          className="fixed bottom-20 right-4 md:bottom-8 md:right-8 z-50 h-10 px-3.5 rounded-full hero-gradient text-white text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 select-none"
           aria-label="Open Copilot Assistant"
         >
           <Sparkles className="w-4 h-4 text-white" strokeWidth={2} />
@@ -181,7 +181,7 @@ export const AssistantPanel: React.FC = () => {
                         <button
                           key={i}
                           onClick={() => handleSend(sugg)}
-                          className="text-[11px] px-2.5 py-1 rounded-full bg-primary-50 text-primary border border-primary-100 hover:bg-primary-100 dark:bg-primary-50/20 dark:border-primary-300/30 transition-colors text-left"
+                          className="text-[11px] px-2.5 py-1 rounded-full bg-primary-50 text-primary border border-primary-100 hover:bg-primary-100 transition-colors text-left"
                         >
                           {sugg}
                         </button>

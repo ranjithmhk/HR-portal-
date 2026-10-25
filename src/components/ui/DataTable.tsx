@@ -95,7 +95,7 @@ export function DataTable<T>({
     <div className={`w-full overflow-hidden rounded-xl border border-border bg-surface ${className}`}>
       {/* Sliding Bulk Selection Bar */}
       {selectable && selectedIds.length > 0 && (
-        <div className="bg-primary-50 dark:bg-primary-50/30 px-4 py-2.5 border-b border-primary-100 dark:border-primary-300/30 flex items-center justify-between text-xs font-medium text-primary animate-fadeIn">
+        <div className="bg-primary-50 px-4 py-2.5 border-b border-primary-100 flex items-center justify-between text-xs font-medium text-primary animate-fadeIn">
           <div className="flex items-center gap-3">
             <span className="font-semibold px-2 py-0.5 rounded-full bg-primary text-white text-[11px]">
               {selectedIds.length}
@@ -169,7 +169,7 @@ export function DataTable<T>({
                   key={id}
                   onClick={() => onRowClick && onRowClick(item)}
                   className={`min-h-[52px] h-[52px] transition-colors ${
-                    isSelected ? 'bg-primary-50/40 dark:bg-primary-50/15' : 'hover:bg-primary-50/30 dark:hover:bg-primary-50/10'
+                    isSelected ? 'bg-primary-50/50' : 'hover:bg-primary-50/20'
                   } ${onRowClick ? 'cursor-pointer' : ''}`}
                 >
                   {selectable && (

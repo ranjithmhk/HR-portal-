@@ -290,7 +290,7 @@ export const ReportIssue: React.FC = () => {
               </div>
 
               {lookedUpReport.internalNotes && (
-                <div className="p-3.5 rounded-xl bg-primary-50 dark:bg-primary-50/20 border border-primary-100 text-xs space-y-1">
+                <div className="p-3.5 rounded-xl bg-primary-50 border border-primary-100 text-xs space-y-1">
                   <span className="font-bold text-primary block">Investigation Notes:</span>
                   <p className="text-text leading-relaxed">{lookedUpReport.internalNotes}</p>
                 </div>

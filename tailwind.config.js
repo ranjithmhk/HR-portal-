@@ -8,6 +8,19 @@ export default {
   theme: {
     extend: {
       colors: {
+        danger: {
+          DEFAULT: '#FF3B30',
+          hover: '#E03126',
+          50: '#FFF2F2',
+        },
+        success: {
+          DEFAULT: '#34C759',
+          50: '#EBF9EE',
+        },
+        warning: {
+          DEFAULT: '#FF9500',
+          50: '#FFF8EE',
+        },
         ink: {
           DEFAULT: 'var(--ink)',
           2: 'var(--ink-2)',

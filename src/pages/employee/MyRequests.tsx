@@ -131,7 +131,7 @@ export const MyRequests: React.FC = () => {
                     onClick={() => setSelectedRequestId(req.id)}
                     className={`p-4 cursor-pointer transition-colors space-y-2.5 ${
                       isSelected
-                        ? 'bg-primary-50/50 dark:bg-primary-50/20'
+                        ? 'bg-primary-50/50'
                         : 'hover:bg-surface-muted/60'
                     }`}
                   >
@@ -211,7 +211,7 @@ export const MyRequests: React.FC = () => {
                       key={msg.id}
                       className={`p-3.5 rounded-xl text-xs space-y-1.5 ${
                         isUser
-                          ? 'bg-primary-50 dark:bg-primary-50/20 border border-primary-100 ml-4'
+                          ? 'bg-primary-50 border border-primary-100 ml-4'
                           : 'bg-surface-muted border border-border mr-4'
                       }`}
                     >

@@ -239,11 +239,11 @@ export const EmployeeHome: React.FC = () => {
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, height: 0 }}
-              className="p-3.5 rounded-2xl bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-xs"
+              className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-xs"
               role="alert"
             >
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 rounded-full bg-amber-500/15 text-amber-600 flex items-center justify-center shrink-0">
                   <AlertTriangle className="w-4 h-4" strokeWidth={2} />
                 </div>
                 <div>
@@ -269,7 +269,7 @@ export const EmployeeHome: React.FC = () => {
                 </button>
                 <button
                   onClick={dismissEmergencyBanner}
-                  className="w-7 h-7 flex items-center justify-center text-text-tertiary hover:text-text rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="w-7 h-7 flex items-center justify-center text-text-tertiary hover:text-text rounded-full hover:bg-black/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   aria-label="Dismiss alert"
                   title="Dismiss alert"
                 >
@@ -486,7 +486,7 @@ export const EmployeeHome: React.FC = () => {
                 })}
               </div>
               {wellnessSelected && (
-                <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium text-center pt-1 animate-fadeIn">
+                <p className="text-[11px] text-emerald-700 font-medium text-center pt-1 animate-fadeIn">
                   ✓ Recorded! Take regular stretch breaks today.
                 </p>
               )}
@@ -614,7 +614,7 @@ export const EmployeeHome: React.FC = () => {
                 {/* Colleague Birthday */}
                 <div className="flex items-center justify-between text-xs pt-1">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-magenta-50 dark:bg-magenta-50/20 text-magenta flex items-center justify-center font-bold text-xs">
+                    <div className="w-7 h-7 rounded-lg bg-magenta-50 text-magenta flex items-center justify-center font-bold text-xs">
                       <Cake className="w-3.5 h-3.5" strokeWidth={1.75} />
                     </div>
                     <div>
@@ -852,7 +852,7 @@ export const EmployeeHome: React.FC = () => {
                   transition={{ duration: 0.15 }}
                   className={`p-3 rounded-xl border text-center transition-colors cursor-default select-none ${
                     isToday
-                      ? 'bg-primary-50 dark:bg-primary-50/30 border-primary ring-2 ring-primary/20 shadow-sm'
+                      ? 'bg-primary-50 border-primary ring-2 ring-primary/20 shadow-sm'
                       : isWeekend
                       ? 'bg-surface-muted/40 border-border/50 text-text-tertiary'
                       : 'bg-surface border-border hover:border-primary/40'
